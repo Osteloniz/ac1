@@ -24,52 +24,52 @@ public class CursosController {
 
     //EndPoint
     //POST: Cadastrar um novo curso
-    @PostMapping
+    @PostMapping("/cadastrarCurso")
     public Cursos cadastrarCurso(@RequestBody Cursos curso){
         return cursosRepository.save(curso);
     }
 
     //EndPoint GET
     //GET: Obter todos os cursos
-    @GetMapping
+    @GetMapping("/obterTodos")
     public List<Cursos> obterTodosCursos() {
         return cursosRepository.findAll();
     }
 
     //EndPoint DELETe
     //DELETE : Deletear pelo ID do curso
-    @DeleteMapping
+    @DeleteMapping("/deletar/{id}")
     public void deletarCurso(@PathVariable Cursos cursos) {
         cursosRepository.delete(cursos);
     }
 
     //EndPoint PUT
     //PUT: Editar todas as informações de um certo curso
-    @PutMapping
+    @PutMapping("/editar/{curso}")
     public Cursos editarCurso(@RequestBody Cursos curso) {
         return cursosRepository.save(curso);
     }
 
     //EndPoint PATCH
     //PATCH: Editar uma ou demais partes das informações de um certo curso
-    @PatchMapping
+    @PatchMapping("/editOther/{curso}")
     public Cursos editarComponenteCurso(@RequestBody Cursos curso) {
         return cursosRepository.save(curso);
     }
 
     //EndPoint GET
     //GET: Obter todos os cursos por uma certa carga horaria
-    @GetMapping
+    @GetMapping("/obterTodosHorario/{hora}")
     public List<Cursos> obterTodosCursoPorCargaHoraria(@RequestBody int cargaHoraria) {
         return cursosRepository.findByCargaHoraria(cargaHoraria);
     }
 
     //EndPoint GET
     //GET: Obter todos os cursos por um respectivo nome
-    @GetMapping
+    @GetMapping("/obterTodosCurso/{nome}")
     public List<Cursos> obterTodosCursoPorNome(@RequestBody String nome) {
         return cursosRepository.findByDescricaoLike("%" + nome + "%");
     }
 
-    
+
 }
